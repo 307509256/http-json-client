@@ -1,6 +1,9 @@
 {
     "ADDR": {
         "IP_ADDR": "127.0.0.1",
-        "PORT": "9000"
+        "PORT": "9000",
+        "SCHEME": "http",
+        "CMD": "/video/",
+        "ARG": "?movie_id="
     }
 }

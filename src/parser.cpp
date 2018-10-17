@@ -29,6 +29,10 @@ API_addr parseCONFIG(string response){
     API_addr buf;
     buf.ip_addr = j_string["ADDR"]["IP_ADDR"];
     buf.port = j_string["ADDR"]["PORT"];
+    buf.scheme = j_string["ADDR"]["SCHEME"];
+    buf.cmd = j_string["ADDR"]["CMD"];
+    buf.arg = j_string["ADDR"]["ARG"];
+
 
     return buf;
 }

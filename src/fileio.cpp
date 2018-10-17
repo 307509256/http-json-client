@@ -11,7 +11,6 @@ using namespace std;
 
 char* readWholeFile(string filename){
 
-    char data[4096];
     ifstream config_json;
     if (!config_json){
         err("config.json not found.");

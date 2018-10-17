@@ -21,7 +21,10 @@ using namespace std;
 
 struct API_addr{
     string ip_addr;
-    string port; 
+    string port;
+    string scheme;
+    string cmd;
+    string arg;
 };
 
 struct j_result{

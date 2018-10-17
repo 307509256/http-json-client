@@ -27,12 +27,13 @@ CURLresponse curlRequest(API_addr api_addr, char arg[1024]){
     if (curl) {
         char URL[4096];
         // cout << URL << endl;
-        strcat(URL,"http://");
+        strcat(URL,api_addr.scheme.c_str());
+        strcat(URL,"://");
         strcat(URL,api_addr.ip_addr.c_str());
         strcat(URL,":");
         strcat(URL,api_addr.port.c_str());
-        strcat(URL,"/video/");
-        strcat(URL,"?movie_id=");
+        strcat(URL,api_addr.cmd.c_str());
+        strcat(URL,api_addr.arg.c_str());
         strcat(URL,escape(arg));
 
 
