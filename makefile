@@ -6,6 +6,7 @@ objects = main.o parser.o fileio.o utils.o type.o request.o
 compile_args = -O3 -g -Wall -c
 
 http : $(objects)
+	mkdir -p ./build
 	g++ -o ./build/main ./build/*.o -lcurl
 
 type.o : type.hpp
@@ -28,6 +29,7 @@ main.o : main.cpp
 
 .PHONY : clean static
 static : $(objects)
+	mkdir -p ./build
 	g++ -static -pthread -o ./build/main ./build/*.o /usr/local/lib/libcurl.a -lz
 
 clean :
