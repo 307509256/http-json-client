@@ -7,7 +7,7 @@ compile_args = -O3 -g -Wall -c
 
 http : $(objects)
 	mkdir -p ./build
-	g++ -o ./build/main ./build/*.o -lcurl
+	g++ -o main ./build/*.o -lcurl
 
 type.o : type.hpp
 	g++ $(compile_args) -o ./build/type.o ./src/type.cpp
@@ -30,7 +30,7 @@ main.o : main.cpp
 .PHONY : clean static
 static : $(objects)
 	mkdir -p ./build
-	g++ -static -pthread -o ./build/main ./build/*.o /usr/local/lib/libcurl.a -lz
+	g++ -static -pthread -o main ./build/*.o /usr/local/lib/libcurl.a -lz
 
 clean :
-	-rm ./build/*.o ./build/main
+	-rm ./build/*.o main

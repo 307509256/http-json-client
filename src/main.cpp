@@ -27,7 +27,7 @@ int main(int argc, char** argv) {
     // parse config from config.json
 
     char buffer[4096];
-    string config_path = "./config.json";
+    string config_path = "config.json";
     strcat(buffer,readWholeFile(config_path));
     cout << buffer << endl;
 
