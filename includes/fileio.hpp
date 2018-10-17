@@ -11,6 +11,6 @@
 #include "utils.hpp"
 #include "type.hpp"
 
-char* readWholeFile(string filename);
+int readWholeFile(char* file_string,char* filename);
 
 #endif

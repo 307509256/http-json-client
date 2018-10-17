@@ -7,33 +7,32 @@
 
 #include "../includes/parser.hpp"
 
-j_result parseJSON(string response){
+int parseJSON(j_result* buf, char* response){
 
     // cout << "pJSON" << endl;
     json j_string = json::parse(response);
     // cout << j_string << endl;
-    j_result buf;
-    buf.len = j_string["meta"]["length"];
-    buf.content = j_string["content"];
+    
+    buf->len = j_string["meta"]["length"];
+    buf->content = j_string["content"];
 
-    return buf;
-
+    return 0;
 }
 
 
-API_addr parseCONFIG(string response){
+int parseCONFIG(API_addr* buf, char* response){
 
     // cout << "pCONF" << endl;
     json j_string = json::parse(response);
     cout << j_string << endl;
-    API_addr buf;
-    buf.ip_addr = j_string["ADDR"]["IP_ADDR"];
-    buf.port = j_string["ADDR"]["PORT"];
-    buf.scheme = j_string["ADDR"]["SCHEME"];
-    buf.cmd = j_string["ADDR"]["CMD"];
-    buf.arg = j_string["ADDR"]["ARG"];
+
+    buf->ip_addr = j_string["ADDR"]["IP_ADDR"];
+    buf->port = j_string["ADDR"]["PORT"];
+    buf->scheme = j_string["ADDR"]["SCHEME"];
+    buf->cmd = j_string["ADDR"]["CMD"];
+    buf->arg = j_string["ADDR"]["ARG"];
 
 
-    return buf;
+    return 0;
 }
 

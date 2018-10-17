@@ -12,7 +12,7 @@
 
 using namespace std;
 
-j_result parseJSON(string response);
-API_addr parseCONFIG(string response);
+int parseJSON(j_result* buf, char* response);
+int parseCONFIG(API_addr* buf, char* response);
 
 #endif

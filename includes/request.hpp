@@ -11,7 +11,7 @@
 #include "type.hpp"
 #include "utils.hpp"
 
-char* escape(char* input);
-CURLresponse curlRequest(API_addr api_addr, char *arg);
+int escape(char* output, char* input);
+int curlRequest(CURLresponse* buf, API_addr* api_addr, char arg[1024]);
 
 #endif
