@@ -13,8 +13,8 @@
 #include <iomanip>
 #include <string>
 #include <string.h>
-#include <curl/curl.h>
-#include <nlohmann/json.hpp>
+#include "curl/curl.h"
+#include "nlohmann/json.hpp"
 
 using json = nlohmann::json;
 using namespace std;
