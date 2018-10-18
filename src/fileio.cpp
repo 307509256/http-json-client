@@ -23,7 +23,7 @@ int readWholeFile(char* file_string, char* filename){
     length = config_json.tellg();           // report location (this is the length)
     config_json.seekg(0, std::ios::beg);    // go back to the beginning
     
-    if (length > 4096) err("config.json too large.");
+    if (length > CONFIG_MAX_LENGTH) err("config.json too large.");
     
     // auto buffer = new char[length];    // allocate memory for a buffer of appropriate dimension
     config_json.read(file_string, length);       // read the whole file into the buffer

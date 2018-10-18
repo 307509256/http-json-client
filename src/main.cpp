@@ -26,8 +26,8 @@ int main(int argc, char** argv) {
 
     // parse config from config.json
 
-    char* buffer = (char*) malloc(sizeof(char) * 4096);
-    char* config_path = (char*) malloc(sizeof(char) * 128);
+    char* buffer = (char*) malloc(sizeof(char) * CONFIG_MAX_LENGTH);
+    char* config_path = (char*) malloc(sizeof(char) * PATH_MAX_LENGTH);
 
     strcat(config_path,"config.json");
     readWholeFile(buffer,config_path);
@@ -51,7 +51,7 @@ int main(int argc, char** argv) {
         if (response.response_string.size() > 0){
             // cout << response_string << endl;
             
-            char* response_char = (char*) malloc(sizeof(char*) * 4096);
+            char* response_char = (char*) malloc(sizeof(char*) * RES_MAX_LENGTH);
             strcpy(response_char,response.response_string.c_str());
             
             j_result movieList;

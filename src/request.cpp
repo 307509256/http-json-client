@@ -22,12 +22,12 @@ int escape(char* output, char* input){
     return -1;
 }
 
-int curlRequest(CURLresponse* buf, API_addr* api_addr, char arg[1024]){
+int curlRequest(CURLresponse* buf, API_addr* api_addr, char arg[ URLENCODE_MAX_LENGTH ]){
 
     CURL* curl = curl_easy_init();
     if (curl) {
-        char* URL = (char*) malloc(sizeof(char*) * 4096);
-        char* urlencoded = (char*) malloc(sizeof(char*) * 1024);
+        char* URL = (char*) malloc(sizeof(char*) * URL_MAX_LENGTH);
+        char* urlencoded = (char*) malloc(sizeof(char*) * URLENCODE_MAX_LENGTH);
         
         escape(urlencoded,arg);
 
