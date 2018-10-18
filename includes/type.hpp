@@ -20,7 +20,7 @@ using json = nlohmann::json;
 using namespace std;
 
 #define URL_MAX_LENGTH 4096
-#define RES_MAX_LENGTH 4096
+#define RES_MAX_LENGTH 4096 * 100
 #define PATH_MAX_LENGTH 128
 #define CONFIG_MAX_LENGTH 4096
 #define URLENCODE_MAX_LENGTH 1024
