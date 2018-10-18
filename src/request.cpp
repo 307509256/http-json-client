@@ -50,7 +50,7 @@ int curlRequest(CURLresponse* buf, API_addr* api_addr, char arg[ URLENCODE_MAX_L
         curl_easy_setopt(curl, CURLOPT_MAXREDIRS, 50L);
         curl_easy_setopt(curl, CURLOPT_TCP_KEEPALIVE, 1L);
         
-        // char* response_string = (char*) malloc(sizeof(char*) * 4096 * 100);;
+        // char* response_string = (char*) malloc(sizeof(char*) * 4096 * 1000);;
         // char* header_string = (char*) malloc(sizeof(char*) * 4096);;
         string response_string;
         string header_string;
@@ -85,7 +85,13 @@ int curlRequest(CURLresponse* buf, API_addr* api_addr, char arg[ URLENCODE_MAX_L
         buf->header_string = header_string;
         // strcat(buf->response_string,response_string);
         // strcat(buf->header_string,header_string);
-    
+
+        // free(response_string);
+        // free(header_string);
+
+        // response_string = NULL;
+        // header_string = NULL;
+
         return 0;
     }
     

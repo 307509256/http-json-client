@@ -40,6 +40,8 @@ struct j_result{
 };
 
 struct CURLresponse{
+    // char* response_string;
+    // char* header_string;
     string response_string;
     string header_string;
     long rescode;

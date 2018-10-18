@@ -40,6 +40,12 @@ int main(int argc, char** argv) {
     API_addr api_addr;
     parseCONFIG(&api_addr, buffer);
 
+    free(buffer);
+    free(config_path);
+
+    buffer = NULL;
+    config_path = NULL;
+
     CURLresponse response;
     curlRequest(&response, &api_addr, argv[1]);
 
@@ -48,14 +54,11 @@ int main(int argc, char** argv) {
     if (response.curlcode == CURLE_OK){
         info("HTTP OK");
 
-        if (response.response_string.size() > 0){
+        if (!response.response_string.empty()){
             // cout << response_string << endl;
-            
-            char* response_char = (char*) malloc(sizeof(char*) * RES_MAX_LENGTH);
-            strcpy(response_char,response.response_string.c_str());
-            
+
             j_result movieList;
-            parseJSON(&movieList, response_char);
+            parseJSON(&movieList, (char*) response.response_string.c_str());
             
             cout << std::left << setw(6) << "ID" << "TITLE" << endl << "----- -----" << endl;
             for (size_t i = 0; i < movieList.len; i++)
@@ -68,7 +71,11 @@ int main(int argc, char** argv) {
                 if (!(i % 10)) cout << endl;
                 cout << std::left << setw(6) << movie_id << title << endl;
             }
+
             cout << "\n-----\nTotal " << movieList.len << endl;
+
+            // free(response_char);
+            // response_char = NULL;
         }
         else{
             err("Empty response from server.");
@@ -76,7 +83,11 @@ int main(int argc, char** argv) {
     }
     else{
         cout << "HTTP Error. CURL error code " << response.curlcode << endl;
+        
+        return -1;
     }
+
+    return 0;
 }
 
 // int main(int argc, char *argv[])
