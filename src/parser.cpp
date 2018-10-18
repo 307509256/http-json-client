@@ -10,7 +10,7 @@
 int parseJSON(j_result* buf, char* response){
 
     // cout << "pJSON" << endl;
-    json j_string = json::parse(response);
+    nlohmann::json j_string = nlohmann::json::parse(response);
     // cout << j_string << endl;
     
     buf->len = j_string["meta"]["length"];
@@ -23,8 +23,8 @@ int parseJSON(j_result* buf, char* response){
 int parseCONFIG(API_addr* buf, char* response){
 
     // cout << "pCONF" << endl;
-    json j_string = json::parse(response);
-    cout << j_string << endl;
+    nlohmann::json j_string = nlohmann::json::parse(response);
+    std::cout << j_string << std::endl;
 
     buf->ip_addr = j_string["ADDR"]["IP_ADDR"];
     buf->port = j_string["ADDR"]["PORT"];

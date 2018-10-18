@@ -10,7 +10,6 @@
 
 #include "type.hpp"
 
-using namespace std;
 
 int parseJSON(j_result* buf, char* response);
 int parseCONFIG(API_addr* buf, char* response);

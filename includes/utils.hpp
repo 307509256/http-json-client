@@ -10,11 +10,10 @@
 
 #include "type.hpp"
 
-using namespace std;
 
-void err(string message);
-void info(string message);
-void warn(string message);
-size_t writeFunction(void *ptr, size_t size, size_t nmemb, string* data);
+void err(char* message);
+void info(char* message);
+void warn(char* message);
+size_t writeFunction(void *ptr, size_t size, size_t nmemb, std::string* data);
 
 #endif

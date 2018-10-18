@@ -16,8 +16,6 @@
 #include "curl/curl.h"
 #include "nlohmann/json.hpp"
 
-using json = nlohmann::json;
-using namespace std;
 
 #define URL_MAX_LENGTH 4096
 #define RES_MAX_LENGTH 4096 * 100
@@ -27,23 +25,23 @@ using namespace std;
 
 
 struct API_addr{
-    string ip_addr;
-    string port;
-    string scheme;
-    string cmd;
-    string arg;
+    std::string ip_addr;
+    std::string port;
+    std::string scheme;
+    std::string cmd;
+    std::string arg;
 };
 
 struct j_result{
     size_t len;
-    json content;
+    nlohmann::json content;
 };
 
 struct CURLresponse{
     // char* response_string;
     // char* header_string;
-    string response_string;
-    string header_string;
+    std::string response_string;
+    std::string header_string;
     long rescode;
     double elapsed;
     CURLcode curlcode;
