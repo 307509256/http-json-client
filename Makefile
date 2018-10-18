@@ -5,7 +5,7 @@ vpath %.o ./build/
 objects = main.o parser.o fileio.o utils.o type.o request.o
 compile_args = -O3 -g -Wall -c -std=c++11
 
-http : $(objects)
+all : $(objects)
 	mkdir -p ./build
 	g++ -o main ./build/*.o -lcurl
 
