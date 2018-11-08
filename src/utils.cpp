@@ -9,16 +9,16 @@
 
 using namespace std;
 
-void err(string message){
+void err(char* message){
     cout << message << endl;
     exit(1);
 }
 
-void info(string message){
+void info(char* message){
     cout << message << endl;
 }
 
-void warn(string message){
+void warn(char* message){
     cout << message << endl;
 }
 

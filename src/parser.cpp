@@ -24,7 +24,9 @@ int parseCONFIG(API_addr* buf, char* response){
 
     // cout << "pCONF" << endl;
     nlohmann::json j_string = nlohmann::json::parse(response);
-    std::cout << j_string << std::endl;
+    
+    extern char DEBUG_FLAG;
+    if (DEBUG_FLAG) std::cout << j_string << std::endl;
 
     buf->ip_addr = j_string["ADDR"]["IP_ADDR"];
     buf->port = j_string["ADDR"]["PORT"];

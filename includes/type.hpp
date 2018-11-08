@@ -23,6 +23,7 @@
 #define CONFIG_MAX_LENGTH 4096
 #define URLENCODE_MAX_LENGTH 1024
 
+extern char DEBUG_FLAG;
 
 struct API_addr{
     std::string ip_addr;

@@ -14,13 +14,22 @@
 #include "../includes/fileio.hpp"
 #include "../includes/utils.hpp"
 
+char DEBUG_FLAG = 0;
+
 using namespace std;
 
 int main(int argc, char** argv) {
 
-    // check number of arguments
+    char* movie_id = (char*) malloc(sizeof(char)*16);
+    *movie_id = 0;
 
-    if (argc!=2){
+    // check number of arguments
+    for(size_t i = 1;i < argc;i++)
+    {
+        if (strcmp(argv[i],"--debug") == 0) DEBUG_FLAG = 1;
+        if (strcmp(argv[i],"--id") == 0) movie_id = argv[i + 1];
+    }
+    if (!movie_id){
         err("ID not given.");
     }
 
@@ -33,7 +42,7 @@ int main(int argc, char** argv) {
     readWholeFile(buffer,config_path);
     // if (!readWholeFile(buffer,config_path)) err("readWholeFile err");
 
-    cout << buffer << endl;
+    if (DEBUG_FLAG) cout << buffer << endl;
 
     // get api address and port, send request
 
@@ -47,7 +56,7 @@ int main(int argc, char** argv) {
     config_path = NULL;
 
     CURLresponse response;
-    curlRequest(&response, &api_addr, argv[1]);
+    curlRequest(&response, &api_addr, movie_id);
 
     // if request succeed, list them
 

@@ -42,7 +42,8 @@ int curlRequest(CURLresponse* buf, API_addr* api_addr, char arg[ URLENCODE_MAX_L
         strcat(URL,urlencoded);
 
 
-        cout << URL << endl;
+        if (DEBUG_FLAG) std::cout << URL << std::endl;
+        
         curl_easy_setopt(curl, CURLOPT_URL, URL);
         curl_easy_setopt(curl, CURLOPT_NOPROGRESS, 1L);
         // // curl_easy_setopt(curl, CURLOPT_USERPWD, "user:pass");
@@ -52,8 +53,8 @@ int curlRequest(CURLresponse* buf, API_addr* api_addr, char arg[ URLENCODE_MAX_L
         
         // char* response_string = (char*) malloc(sizeof(char*) * 4096 * 1000);;
         // char* header_string = (char*) malloc(sizeof(char*) * 4096);;
-        string response_string;
-        string header_string;
+        std::string response_string;
+        std::string header_string;
         curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, writeFunction);
         curl_easy_setopt(curl, CURLOPT_WRITEDATA, &response_string);
         curl_easy_setopt(curl, CURLOPT_HEADERDATA, &header_string);
