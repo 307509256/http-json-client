@@ -11,7 +11,7 @@
 #include "type.hpp"
 
 
-void err(char* message);
+void err(char* message, char* err_code);
 void info(char* message);
 void warn(char* message);
 size_t writeFunction(void *ptr, size_t size, size_t nmemb, std::string* data);

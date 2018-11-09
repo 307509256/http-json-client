@@ -22,7 +22,9 @@ int escape(char* output, char* input){
     return -1;
 }
 
-int curlRequest(CURLresponse* buf, API_addr* api_addr, char arg[ URLENCODE_MAX_LENGTH ]){
+int curlRequest(CURLresponse* buf, API_addr* api_addr, char* arg){
+
+    extern char DEBUG_FLAG;
 
     CURL* curl = curl_easy_init();
     if (curl) {

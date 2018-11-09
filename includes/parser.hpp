@@ -8,10 +8,11 @@
 #ifndef _PARSER_H_
 #define _PARSER_H_
 
-#include "type.hpp"
+#include "utils.hpp"
 
 
 int parseJSON(j_result* buf, char* response);
 int parseCONFIG(API_addr* buf, char* response);
+int argParse(int argc, char** argv, char* movie_id);
 
 #endif

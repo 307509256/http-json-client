@@ -38,3 +38,41 @@ int parseCONFIG(API_addr* buf, char* response){
     return 0;
 }
 
+int argParse(int argc, char** argv, char* movie_id){
+        // check number of arguments
+    extern char DEBUG_FLAG;
+    for(int i = 1;i < argc;i++)
+    {
+        // std::cout <<  "index"<< i << std::endl;
+        if ((strcmp(argv[i],"--debug") == 0) ||
+            (strcmp(argv[i],"-d") == 0)) 
+        {
+            DEBUG_FLAG = 1;
+        }
+
+        else if ((strcmp(argv[i],"--random") == 0) ||
+            (strcmp(argv[i],"-r") == 0))
+        {
+            strcpy(movie_id,"0");
+        }
+
+        else if ((strcmp(argv[i],"--id") == 0) ||
+            (strcmp(argv[i],"-i") == 0))
+        {   
+            // movie_id = argv[i+1];
+            if (++i < argc) {
+                strcpy(movie_id,argv[i]);
+                // std::cout << "id" << movie_id << '\n';
+            }
+            else {
+                err("--id required but not specified.",NULL);
+            }
+        }
+
+        else {
+            err("Invalid arguments.",NULL);
+        }
+    }
+
+    return 0;
+}

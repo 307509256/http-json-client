@@ -15,7 +15,7 @@ int readWholeFile(char* file_string, char* filename){
     
     //"/home/hisenzhang/C/http/config.json"
     config_json.open(filename,ios::in);
-    if (!config_json) err("config.json not found.");
+    if (!config_json) err("config.json not found.",NULL);
 
     int length;
     // config_json.open("file.txt");      // open input file
@@ -23,7 +23,7 @@ int readWholeFile(char* file_string, char* filename){
     length = config_json.tellg();           // report location (this is the length)
     config_json.seekg(0, std::ios::beg);    // go back to the beginning
     
-    if (length > CONFIG_MAX_LENGTH) err("config.json too large.");
+    if (length > CONFIG_MAX_LENGTH) err("config.json too large.",NULL);
     
     // auto buffer = new char[length];    // allocate memory for a buffer of appropriate dimension
     config_json.read(file_string, length);       // read the whole file into the buffer

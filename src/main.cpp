@@ -20,18 +20,16 @@ using namespace std;
 
 int main(int argc, char** argv) {
 
-    char* movie_id = (char*) malloc(sizeof(char)*16);
-    *movie_id = 0;
+    extern char DEBUG_FLAG;
 
-    // check number of arguments
-    for(size_t i = 1;i < argc;i++)
-    {
-        if (strcmp(argv[i],"--debug") == 0) DEBUG_FLAG = 1;
-        if (strcmp(argv[i],"--id") == 0) movie_id = argv[i + 1];
-    }
-    if (!movie_id){
-        err("ID not given.");
-    }
+    char* movie_id = (char*) malloc(sizeof(char)*16); 
+    strcpy(movie_id,"0");
+
+    if(argParse(argc, argv, movie_id)) err("Arguments resolving failure.",NULL);
+
+    // if no id given, return a random one.
+    if (strcmp(movie_id,"0") == 0) warn("ID not given. Selecting randomly."); 
+
 
     // parse config from config.json
 
@@ -87,15 +85,16 @@ int main(int argc, char** argv) {
             // response_char = NULL;
         }
         else{
-            err("Empty response from server.");
+            err("Empty response from server.",NULL);
         }
     }
     else{
-        cout << "HTTP Error. CURL error code " << response.curlcode << endl;
-        
-        return -1;
+        if (DEBUG_FLAG) cout << "CURL error code " << response.curlcode << endl;
+        err("HTTP Error.",NULL);
+
     }
 
+    info("Exiting...");
     return 0;
 }
 
